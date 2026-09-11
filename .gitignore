@@ -1,0 +1,22 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment / secrets -- in case DB credentials ever move out of
+# db_config.py and into a .env file instead
+.env
+
+# macOS
+.DS_Store
+
+# Editors (harmless to keep even if you don't use these)
+.vscode/
+.idea/
+
+# LaTeX build artifacts, in case the system-design .tex/.pdf work
+# ever lands in this same repo
+*.aux
+*.log
+*.out
+*.toc
