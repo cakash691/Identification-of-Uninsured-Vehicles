@@ -126,6 +126,8 @@ inside the ETL layer.
 | `check_connections.py` | Standalone proof that all 5 databases are reachable |
 | `app.py` | Streamlit GUI: plate lookup + flagged-vehicle report |
 | `.streamlit/config.toml` | GUI theme |
+| `export_sample.py` | Regenerates `sample_data/` from the live databases |
+| `sample_data/` | 8 illustrative vehicles traced across all 5 tables |
 
 ---
 
@@ -253,6 +255,16 @@ Run it a second time immediately and it will report `New capture events since
 then: 0` and exit without touching the warehouse. That is the incremental
 behaviour working correctly, not a failure.
 
+**If you re-run `generate_data.py`**, reset the watermark first. The source
+tables are rebuilt but `etl_watermark` survives in `vehicle_dwh`, so the ETL
+would find no capture times newer than the stored watermark, correctly conclude
+there is nothing to do, and leave a stale warehouse:
+
+```bash
+mysql -u iia_app -piia_app_pw -h 127.0.0.1 vehicle_dwh \
+  -e "DELETE FROM etl_watermark WHERE source_name='capture_log';"
+```
+
 ### Launch the GUI
 
 ```bash
@@ -284,6 +296,12 @@ mysql -u iia_app -piia_app_pw -h 127.0.0.1 roadcapture -e \
 
 # 3. Re-run
 python3 run_etl.py          # reports exactly 1 new event, not 9913
+
+# 4. Undo the demo, so the warehouse returns to 5,000 vehicles
+mysql -u iia_app -piia_app_pw -h 127.0.0.1 roadcapture \
+  -e "DELETE FROM capture_log WHERE plate_no='ZZ99XX9999';"
+mysql -u iia_app -piia_app_pw -h 127.0.0.1 vehicle_dwh \
+  -e "DELETE FROM vehicle_360 WHERE plate_canonical='ZZ99XX9999';"
 ```
 
 `ZZ99XX9999` exists in no source system, so it is correctly inserted with a null
@@ -319,7 +337,7 @@ valid-looking policy. The lookup tab shows the override reasoning explicitly.
 
 ---
 
-## 9. How the sample data is generated
+## 9. How the dataset is generated
 
 All records are fictional, but built from real, publicly documented conventions so
 the dataset behaves like real data rather than noise:
@@ -368,5 +386,3 @@ last camera sighting.
 **Only `capture_log` is extracted incrementally.** The other three sources are
 small and re-pulled in full each run. Scaling them incrementally would need
 change-tracking columns they do not currently carry.
-
----

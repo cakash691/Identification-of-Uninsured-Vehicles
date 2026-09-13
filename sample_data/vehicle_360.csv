@@ -1,0 +1,9 @@
+plate_canonical,owner_name,make_model,registration_date,insurer,policy_valid_to,theft_flag,last_seen_location,last_seen_time,status
+AN28QJ3214,Balaji Shetty,Mahindra Scorpio,2024-07-23,Reliance General,2026-10-06,SHREDDED,NH67 Flyover Checkpoint,2026-07-19 13:07:00,STOLEN/SHREDDED -> FLAG (SHREDDED)
+AP10ZW2321,Sunita Das,Maruti Swift,2021-04-27,Bharti AXA General Insurance,2026-10-05,SHREDDED,Andhra Pradesh Flyover Checkpoint 14,2026-08-01 22:56:00,STOLEN/SHREDDED -> FLAG (SHREDDED)
+AR10DF4231,Vandana Kulkarni,Tata Punch,2022-09-05,Zuno General,2026-07-05,-,NH76 Ring Road Camera,2026-08-08 14:33:00,INSURANCE EXPIRED (2026-07-05) -> FLAG
+AS11DT9951,Srinivas Saikia,Maruti Swift,2022-11-20,SBI General,2026-03-02,-,Assam Highway Checkpoint 10,2026-09-10 13:05:00,INSURANCE EXPIRED (2026-03-02) -> FLAG
+BR13GL3203,Rekha Patra,Maruti Swift,2019-06-18,,,-,NH68 Junction Camera,2026-09-08 18:08:00,NO INSURANCE ON FILE -> FLAG
+CG12ZM4065,Amit Reddy,Hyundai Creta,2023-02-27,,,-,Chhattisgarh Toll Plaza 11,2026-07-27 11:59:00,NO INSURANCE ON FILE -> FLAG
+CH10QV8126,Seema Sandhu,Hyundai Creta,2021-03-20,Zuno General,2027-04-05,-,Chandigarh Highway Checkpoint 31,2026-07-17 04:52:00,OK - INSURED & CLEAR
+DD10KV2619,Simran Sisodia,Maruti Baleno,2019-07-28,Tata AIG,2027-07-26,-,Dadra and Nagar Haveli and Daman and Diu Junction Camera 16,2026-07-30 10:08:00,OK - INSURED & CLEAR
